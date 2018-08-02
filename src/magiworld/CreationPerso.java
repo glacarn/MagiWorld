@@ -29,51 +29,70 @@ public class CreationPerso {
     public void CreationPerso (int joueur)
     {
         System.out.println("Création du personnage du Joueur " + joueur);
-        System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
-        caracteristique [0] = sc.nextInt();
-        System.out.println("Niveau du personnage ?");
-        caracteristique [1] = sc.nextInt();
-        VerifLvl(caracteristique [1]);
-        caracteristique [2] = caracteristique [1]*5;
-        System.out.println("Force du personnage ?");
-        caracteristique [3] = sc.nextInt();
-        VerifComp(caracteristique [3]);
-        System.out.println("Agilite du personnage ?");
-        caracteristique [4] = sc.nextInt();
-        VerifComp(caracteristique [4]);
-        System.out.println("Intelligence du personnage ?");
-        caracteristique [5] = sc.nextInt();
-        VerifComp(caracteristique [5]);
-        VerifTotal();
+        boolean classeOk = false;
+        do
+        {
+            System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");        
+            caracteristique [0] = sc.nextInt();
+            if (caracteristique [0] == 1 || caracteristique [0] == 2 || caracteristique [0] == 3)
+            {
+                classeOk = true;
+            }
+            else
+            {
+                System.out.println("Veuillez choisir entre les 3 propositions");
+            }
+        }
+        while (classeOk != true);
+        SelecAllComp();
+    }
+
+    
+    private void SelectComp (String competence, int comp, int cond)
+    {
+        boolean compOk = false;
+        do
+        {
+            System.out.println(competence+" du personnage ?");
+            caracteristique [comp] = sc.nextInt();
+            if (caracteristique [comp] < cond || caracteristique [comp] > 100)
+            {
+                System.out.println("Vous devez selectionner un chiffre entre "+cond+" et 100");
+            }
+            else
+            {
+                compOk = true;
+            }
+        }
+        while (compOk != true);   
     }
     
-    private void VerifLvl(int niveau) 
+    
+    private void SelecAllComp ()
     {
-        if (niveau < 1 || niveau > 100)
+        boolean selectAllComp = false;
+        do
         {
-            System.out.println("Vous devez selectionner un chiffre entre 1 et 100");
+            SelectComp("Niveau", 1, 1);
+            caracteristique [2] = caracteristique [1]*5; // vie
+            SelectComp("Force", 3, 0);
+            SelectComp("Agilité", 4, 0);
+            SelectComp("Intelligence", 5, 0);
+            if ((caracteristique [3]+caracteristique [4]+caracteristique [5]) !=  caracteristique [1])
+            {
+                System.out.println("Attention le total force + agilité + intelligence doit être égal au niveau du joueur.");
+            }
+            else
+            {
+                selectAllComp = true;
+            }
         }
+        while (selectAllComp != true);     
     }
     
-    private void VerifComp(int comp)
-    {
-        if (comp < 0 || comp > 100)
-        {
-            System.out.println("Vous devez selectionner un chiffre entre 0 et 100");
-        }
-    }
-    
-    private void VerifTotal ()
-    {
-        if ((caracteristique [3]+caracteristique [4]+caracteristique [5]) !=  caracteristique [1])
-        {
-            System.out.println("Attention le total force + agilité + intelligence doit être égal au niveau du joueur.");
-        }
-    }
     
     public int getCaracterisitque (int caract)
     {
-        
         return caracteristique [caract];
     }
 }
