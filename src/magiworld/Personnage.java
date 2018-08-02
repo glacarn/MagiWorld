@@ -33,4 +33,52 @@ public abstract class Personnage
     public abstract void AttaqueSpeciale ();
     
     public abstract void DecrisToi ();
+    
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public int getVie() {
+        return vie;
+    }
+
+    public int getForce() {
+        return force;
+    }
+
+    public int getAgilite() {
+        return agilite;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
+
+    public void setVie(int vie) {
+        this.vie = vie;
+    }
+
+    public void setForce(int force) {
+        this.force = force;
+    }
+
+    public void setAgilite(int agilite) {
+        this.agilite = agilite;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public String getJoueur() {
+        return joueur;
+    }
+
+    public void setJoueur(String joueur) {
+        this.joueur = joueur;
+    }
 }

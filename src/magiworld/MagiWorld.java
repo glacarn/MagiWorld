@@ -22,15 +22,14 @@ public class MagiWorld {
      */
     public static void main(String[] args) 
     {
-        
         createP.CreationPerso(1);
-        ChoixClasse(joueur1, J1);
+        joueur1 = ChoixClasse(joueur1, J1);
         createP.CreationPerso(2);
-        ChoixClasse(joueur2, J2);
-        
+        joueur2 = ChoixClasse(joueur2, J2);
+        Combat fight = new Combat (joueur1, joueur2);
     }
     
-    private static void ChoixClasse (Personnage joueur, String J0)
+    private static Personnage ChoixClasse (Personnage joueur, String J0)
     {
         switch (createP.getCaracterisitque(0)) 
         {
@@ -50,5 +49,6 @@ public class MagiWorld {
                 break;
         }
         joueur.DecrisToi();
+        return joueur;
     }
 }
