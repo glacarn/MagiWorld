@@ -12,11 +12,17 @@ package magiworld;
 public class Rodeur extends Personnage 
 {
 
-    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence) 
+    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueur) 
     {
-        super(niveau, vie, force, agilite, intelligence);
+        super(niveau, vie, force, agilite, intelligence, joueur);
     }
 
+    @Override
+    public void DecrisToi() 
+    {
+        System.out.println("Chuuut je suis le Rodeur "+joueur+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+    }
+    
     @Override
     public void AttaqueBasique() 
     {

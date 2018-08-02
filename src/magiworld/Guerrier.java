@@ -11,11 +11,17 @@ package magiworld;
  */
 public class Guerrier extends Personnage{
 
-    public Guerrier(int niveau, int vie, int force, int agilite, int intelligence) 
+    public Guerrier(int niveau, int vie, int force, int agilite, int intelligence, String joueur) 
     {
-        super(niveau, vie, force, agilite, intelligence);
+        super(niveau, vie, force, agilite, intelligence, joueur);
     }
 
+        @Override
+    public void DecrisToi() 
+    {
+        System.out.println("Woarg je suis le Guerrier "+joueur+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+    }
+    
     @Override
     public void AttaqueBasique() 
     {

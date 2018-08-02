@@ -13,30 +13,37 @@ import java.util.Scanner;
  */
 public class CreationPerso {
     
-    private int classe;
-    private int niveau;
-    private int force;
-    private int agilite;
-    private int intelligence;
     Scanner sc = new Scanner(System.in);
+    /*
+    Caracteristique :
+        0: classe
+        1: niveau
+        2: vie
+        3: force
+        4: agilité
+        5: intelligence
+    */
+    private int [] caracteristique = new int [6];
+    
     
     public void CreationPerso (int joueur)
     {
         System.out.println("Création du personnage du Joueur " + joueur);
         System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
-        classe = sc.nextInt();
+        caracteristique [0] = sc.nextInt();
         System.out.println("Niveau du personnage ?");
-        niveau = sc.nextInt();
-        VerifLvl(niveau);
+        caracteristique [1] = sc.nextInt();
+        VerifLvl(caracteristique [1]);
+        caracteristique [2] = caracteristique [1]*5;
         System.out.println("Force du personnage ?");
-        force = sc.nextInt();
-        VerifComp(force);
+        caracteristique [3] = sc.nextInt();
+        VerifComp(caracteristique [3]);
         System.out.println("Agilite du personnage ?");
-        agilite = sc.nextInt();
-        VerifComp(agilite);
+        caracteristique [4] = sc.nextInt();
+        VerifComp(caracteristique [4]);
         System.out.println("Intelligence du personnage ?");
-        intelligence = sc.nextInt();
-        VerifComp(intelligence);
+        caracteristique [5] = sc.nextInt();
+        VerifComp(caracteristique [5]);
         VerifTotal();
     }
     
@@ -58,9 +65,15 @@ public class CreationPerso {
     
     private void VerifTotal ()
     {
-        if ((force+agilite+intelligence) !=  niveau)
+        if ((caracteristique [3]+caracteristique [4]+caracteristique [5]) !=  caracteristique [1])
         {
             System.out.println("Attention le total force + agilité + intelligence doit être égal au niveau du joueur.");
         }
+    }
+    
+    public int getCaracterisitque (int caract)
+    {
+        
+        return caracteristique [caract];
     }
 }
