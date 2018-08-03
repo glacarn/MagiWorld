@@ -23,32 +23,34 @@ public class MagiWorld {
     public static void main(String[] args) 
     {
         createP.CreationPerso(1);
-        joueur1 = ChoixClasse(joueur1, J1);
+        joueur1 = ChoixClasse(J1, joueur1, J2, joueur2);
         createP.CreationPerso(2);
-        joueur2 = ChoixClasse(joueur2, J2);
+        joueur2 = ChoixClasse(J2, joueur2, J1, joueur1);
+        joueur1.setJoueurDef(joueur2);
         Combat fight = new Combat (joueur1, joueur2);
     }
+   
     
-    private static Personnage ChoixClasse (Personnage joueur, String J0)
+    private static Personnage ChoixClasse (String jAtk, Personnage joueurAtk, String jDef, Personnage joueurDef)
     {
         switch (createP.getCaracterisitque(0)) 
         {
             case 1:
-                joueur = new Guerrier(createP.getCaracterisitque(1), createP.getCaracterisitque(2),
-                        createP.getCaracterisitque(3),createP.getCaracterisitque(4),createP.getCaracterisitque(5), J0);
+                joueurAtk = new Guerrier(createP.getCaracterisitque(1), createP.getCaracterisitque(2),
+                        createP.getCaracterisitque(3),createP.getCaracterisitque(4),createP.getCaracterisitque(5), jAtk, jDef, joueurDef);
                 break;
             case 2:
-                joueur = new Rodeur(createP.getCaracterisitque(1), createP.getCaracterisitque(2),
-                        createP.getCaracterisitque(3),createP.getCaracterisitque(4),createP.getCaracterisitque(5), J0);
+                joueurAtk = new Rodeur(createP.getCaracterisitque(1), createP.getCaracterisitque(2),
+                        createP.getCaracterisitque(3),createP.getCaracterisitque(4),createP.getCaracterisitque(5), jAtk, jDef, joueurDef);
                 break;
             case 3:
-                joueur = new Mage(createP.getCaracterisitque(1), createP.getCaracterisitque(2),
-                        createP.getCaracterisitque(3),createP.getCaracterisitque(4),createP.getCaracterisitque(5), J0);
+                joueurAtk = new Mage(createP.getCaracterisitque(1), createP.getCaracterisitque(2),
+                        createP.getCaracterisitque(3),createP.getCaracterisitque(4),createP.getCaracterisitque(5), jAtk, jDef, joueurDef);
                 break;
             default:
                 break;
         }
-        joueur.DecrisToi();
-        return joueur;
+        joueurAtk.DecrisToi();
+        return joueurAtk;
     }
 }

@@ -12,29 +12,30 @@ package magiworld;
 public class Rodeur extends Personnage 
 {
 
-    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueur) 
+    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, String joueurDefStr, Personnage joueurDef) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueur);
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDefStr, joueurDef);
     }
 
     @Override
     public void DecrisToi() 
     {
-        System.out.println("Chuuut je suis le Rodeur "+joueur+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+        System.out.println("Chuuut je suis le Rodeur "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
     }
     
     @Override
     public void AttaqueBasique() 
     {
-        System.out.println("Joueur X utilise Tir à l'Arc et inflige "+ agilite +" dommages");
-        System.out.println("Joueur X perd "+ agilite +" points de vie");
+        System.out.println(joueurAtkStr+" utilise Tir à l'Arc et inflige "+ agilite +" dommages");
+        System.out.println(joueurDefStr+" perd "+ agilite +" points de vie");
+        joueurDef.setVie(joueurDef.getVie()-agilite);
     }
 
     @Override
     public void AttaqueSpeciale() {
-        System.out.println("Joueur X utilise Concentration, son agilité augmente de " + niveau/2);
+        System.out.println(joueurAtkStr+" utilise Concentration, son agilité augmente de " + niveau/2);
         agilite = agilite + (niveau/2);
-        System.out.println("Joueur X a désormais une agilité de "+agilite);
+        System.out.println(joueurAtkStr+" a désormais une agilité de "+agilite);
     }
     
 }

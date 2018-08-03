@@ -11,30 +11,36 @@ package magiworld;
  */
 public class Mage extends Personnage {
 
-    public Mage(int niveau, int vie, int force, int agilite, int intelligence, String joueur) 
+    int vieMax = vie;
+    public Mage(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, String joueurDefStr, Personnage joueurDef) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueur);       
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDefStr, joueurDef);       
     }
 
     @Override
     public void DecrisToi() 
     {
-        System.out.println("Abracadabra je suis le Mage "+joueur+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+        System.out.println("Abracadabra je suis le Mage "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
     }
     
     
     @Override
     public void AttaqueBasique() 
     {
-        System.out.println("Joueur X utilise Boule de Feu et inflige "+ intelligence +" dommages");
-        System.out.println("Joueur X perd "+ intelligence +" points de vie");
+        System.out.println(joueurAtkStr+" utilise Boule de Feu et inflige "+ intelligence +" dommages");
+        System.out.println(joueurDefStr+" perd "+ intelligence +" points de vie");
+        joueurDef.setVie(joueurDef.getVie()-intelligence);
     }
 
     @Override
     public void AttaqueSpeciale() 
     {
-        System.out.println("Joueur X utilise Soin et gagne "+ vie*2 +" vitalité");
-        //A modifier en fonction des pts de vie du départ
+        System.out.println(joueurAtkStr+" utilise Soin et gagne "+ intelligence*2 +" vitalité");
+        vie = vie + (intelligence*2);
+        if (vie >= vieMax)
+        {
+            vie = vieMax;
+        }
     }
 
 }
