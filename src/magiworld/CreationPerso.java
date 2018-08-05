@@ -5,7 +5,6 @@
  */
 package magiworld;
 
-import java.util.Scanner;
 
 /**
  * Gère l'intégralité de la création d'un joueur
@@ -22,9 +21,11 @@ import java.util.Scanner;
 public class CreationPerso {
     
     /**
-     * Scanner permet de récupérer les choix du joueur concernant la création de son personnage
+    * VerifScanner permet de récupérer les choix du joueur concernant la création de son personnage
+    * 
+    * @see VerifScanner
      */
-    private Scanner sc = new Scanner(System.in);
+    private VerifScanner scan = new VerifScanner();
     
     /**
      * 
@@ -78,8 +79,9 @@ public class CreationPerso {
         boolean classeOk = false;
         do
         {
-            System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");        
-            caracteristique [0] = sc.nextInt();
+            String question = "Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)";
+            System.out.println(question);        
+            caracteristique [0] = scan.VerifScanner(question);
             if (caracteristique [0] == 1 || caracteristique [0] == 2 || caracteristique [0] == 3)
             {
                 classeOk = true;
@@ -139,8 +141,9 @@ public class CreationPerso {
         boolean compOk = false;
         do
         {
-            System.out.println(competence+" du personnage ?");
-            caracteristique [comp] = sc.nextInt();
+            String question = competence+" du personnage ?";
+            System.out.println(question);
+            caracteristique [comp] = scan.VerifScanner(question);
             if (caracteristique [comp] < cond || caracteristique [comp] > 100)
             {
                 System.out.println("Vous devez selectionner un chiffre entre "+cond+" et 100");

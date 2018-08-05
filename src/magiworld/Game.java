@@ -5,7 +5,6 @@
  */
 package magiworld;
 
-import java.util.Scanner;
 
 /**
  * Game est le corps du jeu, création des personnages et combat
@@ -25,9 +24,9 @@ import java.util.Scanner;
 public class Game 
 {
     /**
-     * Scanner permet de récupérer les réponses concernant l'attaque choisie
+     * VerifScanner permet de récupérer les réponses concernant l'attaque choisie
      */
-    private Scanner sc = new Scanner(System.in);
+    private VerifScanner scan = new VerifScanner();
     
     /**
      * Initialisation de la classe CreationPerso afin de gérer la création des personnages
@@ -110,10 +109,11 @@ public class Game
     {
         boolean atk = true;
         do
-        {        
-            System.out.println(joueurAtk.getJoueur()+" ("+joueurAtk.getVie()+" Vitalité) veuillez choisir votre action (1 : Attaque Basique, 2 : Attaque Spéciale)");
+        {   
+            String question = joueurAtk.getJoueur()+" ("+joueurAtk.getVie()+" Vitalité) veuillez choisir votre action (1 : Attaque Basique, 2 : Attaque Spéciale)";
+            System.out.println(question);
             atk = true;
-            switch (sc.nextInt()) {
+            switch (scan.VerifScanner(question)) {
                 case 1:
                     joueurAtk.AttaqueBasique();
                     break;
