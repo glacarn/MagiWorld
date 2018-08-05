@@ -11,9 +11,9 @@ package magiworld;
  */
 public class Guerrier extends Personnage{
 
-    public Guerrier(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, String joueurDefStr, Personnage joueurDef) 
+    public Guerrier(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDefStr, joueurDef);
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);
     }
 
         @Override
@@ -26,7 +26,7 @@ public class Guerrier extends Personnage{
     public void AttaqueBasique() 
     {
         System.out.println(joueurAtkStr+" utilise Coup d'Epée et inflige "+ force +" dommages");
-        System.out.println(joueurDefStr+" perd "+ force +" points de vie");
+        System.out.println(joueurDef.getJoueur()+" perd "+ force +" points de vie");
         joueurDef.setVie(joueurDef.getVie()-force);
     }
 
@@ -34,7 +34,7 @@ public class Guerrier extends Personnage{
     public void AttaqueSpeciale() 
     {
         System.out.println(joueurAtkStr+" utilise Coup de Rage et inflige "+ force*2 +" dommages");
-        System.out.println(joueurDefStr+" perd "+ force*2 +" points de vie");
+        System.out.println(joueurDef.getJoueur()+" perd "+ force*2 +" points de vie");
         joueurDef.setVie(joueurDef.getVie()-force*2);
         System.out.println(joueurAtkStr+" perd "+ force/2 +" points de vie");
         vie = vie - (force/2);

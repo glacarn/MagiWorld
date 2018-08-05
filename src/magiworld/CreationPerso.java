@@ -13,7 +13,8 @@ import java.util.Scanner;
  */
 public class CreationPerso {
     
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
+    private Personnage newPerso;
     /*
     Caracteristique :
         0: classe
@@ -26,9 +27,16 @@ public class CreationPerso {
     private int [] caracteristique = new int [6];
     
     
-    public void CreationPerso (int joueur)
+    public Personnage CreationPerso (String jAtk, Personnage joueurAtk, Personnage joueurDef)
     {
-        System.out.println("Création du personnage du Joueur " + joueur);
+        System.out.println("Création du personnage du " + jAtk);
+        ChoixClasse();
+        SelecAllComp();
+        return ChoixClasse(jAtk,joueurAtk, joueurDef);
+    }
+
+    private void ChoixClasse ()
+    {        
         boolean classeOk = false;
         do
         {
@@ -44,9 +52,31 @@ public class CreationPerso {
             }
         }
         while (classeOk != true);
-        SelecAllComp();
     }
-
+    
+    
+    private void SelecAllComp ()
+    {
+        boolean selectAllComp = false;
+        do
+        {
+            SelectComp("Niveau", 1, 1);
+            caracteristique [2] = caracteristique [1]*5; // vie
+            SelectComp("Force", 3, 0);
+            SelectComp("Agilité", 4, 0);
+            SelectComp("Intelligence", 5, 0);
+            if ((caracteristique [3]+ caracteristique [4]+caracteristique [5]) !=  caracteristique [1])
+            {
+                System.out.println("Attention le total force + agilité + intelligence doit être égal au niveau du joueur.");
+            }
+            else
+            {
+                selectAllComp = true;
+            }
+        }
+        while (selectAllComp != true);     
+    }
+    
     
     private void SelectComp (String competence, int comp, int cond)
     {
@@ -67,32 +97,27 @@ public class CreationPerso {
         while (compOk != true);   
     }
     
-    
-    private void SelecAllComp ()
+        
+    private Personnage ChoixClasse (String jAtk, Personnage joueurAtk, Personnage joueurDef)
     {
-        boolean selectAllComp = false;
-        do
+        switch (caracteristique[0]) 
         {
-            SelectComp("Niveau", 1, 1);
-            caracteristique [2] = caracteristique [1]*5; // vie
-            SelectComp("Force", 3, 0);
-            SelectComp("Agilité", 4, 0);
-            SelectComp("Intelligence", 5, 0);
-            if ((caracteristique [3]+caracteristique [4]+caracteristique [5]) !=  caracteristique [1])
-            {
-                System.out.println("Attention le total force + agilité + intelligence doit être égal au niveau du joueur.");
-            }
-            else
-            {
-                selectAllComp = true;
-            }
+            case 1:
+                joueurAtk = new Guerrier(caracteristique[1], caracteristique[2],
+                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk, joueurDef);
+                break;
+            case 2:
+                joueurAtk = new Rodeur(caracteristique[1], caracteristique[2],
+                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk, joueurDef);
+                break;
+            case 3:
+                joueurAtk = new Mage(caracteristique[1], caracteristique[2],
+                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk, joueurDef);
+                break;
+            default:
+                break;
         }
-        while (selectAllComp != true);     
-    }
-    
-    
-    public int getCaracterisitque (int caract)
-    {
-        return caracteristique [caract];
+        joueurAtk.DecrisToi();
+        return joueurAtk;
     }
 }

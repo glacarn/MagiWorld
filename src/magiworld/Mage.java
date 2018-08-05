@@ -12,9 +12,9 @@ package magiworld;
 public class Mage extends Personnage {
 
     int vieMax = vie;
-    public Mage(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, String joueurDefStr, Personnage joueurDef) 
+    public Mage(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDefStr, joueurDef);       
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);       
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Mage extends Personnage {
     public void AttaqueBasique() 
     {
         System.out.println(joueurAtkStr+" utilise Boule de Feu et inflige "+ intelligence +" dommages");
-        System.out.println(joueurDefStr+" perd "+ intelligence +" points de vie");
+        System.out.println(joueurDef.getJoueur()+" perd "+ intelligence +" points de vie");
         joueurDef.setVie(joueurDef.getVie()-intelligence);
     }
 

@@ -12,9 +12,9 @@ package magiworld;
 public class Rodeur extends Personnage 
 {
 
-    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, String joueurDefStr, Personnage joueurDef) 
+    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDefStr, joueurDef);
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Rodeur extends Personnage
     public void AttaqueBasique() 
     {
         System.out.println(joueurAtkStr+" utilise Tir à l'Arc et inflige "+ agilite +" dommages");
-        System.out.println(joueurDefStr+" perd "+ agilite +" points de vie");
+        System.out.println(joueurDef.getJoueur()+" perd "+ agilite +" points de vie");
         joueurDef.setVie(joueurDef.getVie()-agilite);
     }
 

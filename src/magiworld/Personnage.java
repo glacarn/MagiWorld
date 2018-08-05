@@ -17,10 +17,9 @@ public abstract class Personnage
     protected int agilite;
     protected int intelligence;
     protected String joueurAtkStr;
-    protected String joueurDefStr;
     protected Personnage joueurDef;
     
-    public Personnage (int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, String joueurDefStr, Personnage joueurDef)
+    public Personnage (int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef)
     {
         this.niveau = niveau;
         this.vie = vie;
@@ -28,7 +27,6 @@ public abstract class Personnage
         this.agilite = agilite;
         this.intelligence = intelligence;
         this.joueurAtkStr = joueurAtkStr;
-        this.joueurDefStr = joueurDefStr;
         this.joueurDef = joueurDef;
     }
     

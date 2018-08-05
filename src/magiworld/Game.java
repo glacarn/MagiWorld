@@ -11,31 +11,38 @@ import java.util.Scanner;
  *
  * @author Arno
  */
-public class Combat 
+public class Game 
 {
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
+    private CreationPerso createP = new CreationPerso();
+    private Personnage joueur1;
+    private Personnage joueur2;
+
     
-    public Combat (Personnage joueur1, Personnage joueur2)
+    public Game ()
+    {
+        joueur1 = createP.CreationPerso("Joueur 1", joueur1, joueur2);
+        joueur2 = createP.CreationPerso("Joueur 2", joueur2, joueur1);
+        joueur1.setJoueurDef(joueur2);
+        
+        Combat(joueur1, joueur2);
+    }
+    
+    private void Combat (Personnage joueur1, Personnage joueur2)
     {
         while (joueur1.getVie()>0 && joueur2.getVie()>0)
         {
-            if (joueur1.getVie() <= 0)
-            {
-                System.out.println("Joueur 1 a perdu !");
-            }
-            else
-            {
-                Attaque(joueur1);
-            }
-            if (joueur2.getVie() <= 0)
-            {
-                System.out.println("Joueur 2 a perdu !");
-            }
-            else
-            {
-                Attaque(joueur2);
-            }          
+            if (joueur1.getVie()>0)
+            { Attaque(joueur1); }
+            if (joueur2.getVie()>0 && joueur1.getVie()>0)
+            { Attaque(joueur2); }          
         }
+        if(joueur1.getVie() <=0 && joueur2.getVie() <=0)
+        { System.out.println("Les 2 joueurs ont perdu"); }
+        else if (joueur1.getVie()<=0)
+        { System.out.println("Joueur 1 a perdu !"); }
+        else if (joueur2.getVie()<=0)
+        { System.out.println("Joueur 2 a perdu !"); }
     }
     
     
@@ -61,4 +68,6 @@ public class Combat
         }
         while (atk != true);
     }
+    
+    
 }
