@@ -8,16 +8,48 @@ package magiworld;
 import java.util.Scanner;
 
 /**
- *
+ * Classe Main du jeux MagiWorld
+ * 
+ * <p>
+ * Jeu de rôle et de combat entre 2 joueurs. 
+ * Chaque joueur définit sa classe (Guerrier, Rodeur ou Mage) son niveau et ses compétences (Force, Agilité, Intelligence).
+ * </p>
+ * 
+ * <p>
+ * Cette renvoie vers le corps du jeu : classe Game.
+ * Elle offre la possibilité de rejouer après la fin d'une partie.
+ * </p>
+ * 
+ * @see Game
+ * @see CreationPerso
+ * @see Personnage
+ * @see Guerrier
+ * @see Rodeur
+ * @see Mage
+ * 
  * @author Arno
  */
 public class MainMagiWorld {
 
-    private static char rejouer;
+    /**
+     * Scanner permet d'obtenir la réponse de l'utilisateur sur l'envie de recommancer une partie
+     */
     private static Scanner sc = new Scanner(System.in);
     
     /**
+     * rejouer offre la possibilité de recommencer une partie si == 'O'.
+     * 
+     * @see Scanner
+     */
+    private static char rejouer;
+    
+    
+    /**
+     * Point d'entrée du jeux renvoyant vers le corps du jeu, et offrant la possibilité de rejouer.
+     * 
      * @param args the command line arguments
+     * 
+     * @see Game
      */
     public static void main(String[] args) 
     {

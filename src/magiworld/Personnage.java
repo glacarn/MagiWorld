@@ -6,19 +6,77 @@
 package magiworld;
 
 /**
- *
+ * Personnage est une classe abstraite permettant l'héritage pour les classes Guerrier, Rodeur, Mage
+ * 
+ * <p>
+ * Cette classe permet de définir les grandes lignes des classes de combattant : attributs du personnage et methode attaque
+ * </p>
+ * 
+ * @see Guerrier
+ * @see Rodeur
+ * @see Mage
+ * @see CreationPerso
+ * 
  * @author Arno
  */
 public abstract class Personnage 
 {
+    /**
+     * niveau du personnage entre 0 et 100
+     */
     protected int niveau;
+    
+    /**
+     * vie du personnage = niveau*5
+     * @see niveau
+     */
     protected int vie;
+    
+    /**
+     * force du personnage entre 1 et 100
+     */
     protected int force;
+    
+    /**
+     * agilite du personnage entre 0 et 100
+     */
     protected int agilite;
+    
+    /**
+     * intelligence du personnage entre 0 et 100
+     */
     protected int intelligence;
+    
+    /**
+     * nom du joueur : joueur1 ou joueur2
+     */
     protected String joueurAtkStr;
+    
+    /**
+     * Personnage du joueur adverse
+     */
     protected Personnage joueurDef;
     
+    
+    /**
+     * Creation du personnage avec les attributs
+     * 
+     * @param niveau        : niveau du Personnage
+     * @param vie           : vie du Personnage
+     * @param force         : force du Personnage
+     * @param agilite       : agilite du Personnage
+     * @param intelligence  : intelligence du Personnage
+     * @param joueurAtkStr  : joueur1 ou joueur2
+     * @param joueurDef     : joueur adverse
+     * 
+     * @see niveau
+     * @see vie
+     * @see force
+     * @see agilite
+     * @see intelligence
+     * @see joueurAtkStr
+     * @see joueurDef
+     */
     public Personnage (int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef)
     {
         this.niveau = niveau;
@@ -29,6 +87,7 @@ public abstract class Personnage
         this.joueurAtkStr = joueurAtkStr;
         this.joueurDef = joueurDef;
     }
+    
     
     public abstract void AttaqueBasique ();
     

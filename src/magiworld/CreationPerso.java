@@ -8,33 +8,71 @@ package magiworld;
 import java.util.Scanner;
 
 /**
- *
+ * Gère l'intégralité de la création d'un joueur
+ * 
+ * <p>
+ * Gère le choix de la classe choisi par le joueur et les compétences qu'il aura (Niveau, Force, Agilité, Intelligence)
+ * </p>
+ * 
+ * @see ChoixClasse
+ * @see SelectAllComp
+ * 
  * @author Arno
  */
 public class CreationPerso {
     
+    /**
+     * Scanner permet de récupérer les choix du joueur concernant la création de son personnage
+     */
     private Scanner sc = new Scanner(System.in);
-    private Personnage newPerso;
-    /*
-    Caracteristique :
-        0: classe
-        1: niveau
-        2: vie
-        3: force
-        4: agilité
-        5: intelligence
-    */
+    
+    /**
+     * 
+     * Caracteristique recueille toutes les caractéristiques du personnage à créer :
+     * <ul>
+     *   <li>0: classe</li>
+     *   <li>1: niveau</li>
+     *   <li>2: vie</li>
+     *   <li>3: force</li>
+     *   <li>4: agilité</li>
+     *   <li>5: intelligence</li>
+     * </ul>
+     * 
+     * @see Personnage
+     */
     private int [] caracteristique = new int [6];
     
-    
+    /**
+     * Gère le choix de la classe et des compétences
+     * 
+     * <ul>
+     * <li>1 : Envoie la gestion de la création de la classe à ChoixClasse.</li>
+     * <li>2 : Envoie la gestion de la selection des compétences à SelectAllComp.</li>
+     * </ul>
+     * 
+     * @param jAtk      : "joueur 1" ou "joueur 2"
+     * @param joueurAtk : personnage du joueur à créer
+     * @param joueurDef : personnage du joueur adverse
+     * 
+     * @return Personnage à créer
+     * 
+     * @see ChoixClasse
+     * @see SelectAllComp
+     */
     public Personnage CreationPerso (String jAtk, Personnage joueurAtk, Personnage joueurDef)
     {
         System.out.println("Création du personnage du " + jAtk);
         ChoixClasse();
-        SelecAllComp();
+        SelectAllComp();
         return ChoixClasse(jAtk,joueurAtk, joueurDef);
     }
 
+    /**
+     * Gère la selection de la classe choisi par le joueur (Guerrier, Rodeur ou Mage), 
+     * remplit caracteristique [0]
+     * 
+     * @see caracteristique
+     */
     private void ChoixClasse ()
     {        
         boolean classeOk = false;
@@ -54,8 +92,13 @@ public class CreationPerso {
         while (classeOk != true);
     }
     
-    
-    private void SelecAllComp ()
+    /**
+     * Gère la selection de toutes les compétences par l'intermédiaire de SelectComp
+     * 
+     * @see caracteristique
+     * @see SelectComp
+     */
+    private void SelectAllComp ()
     {
         boolean selectAllComp = false;
         do
@@ -77,7 +120,20 @@ public class CreationPerso {
         while (selectAllComp != true);     
     }
     
-    
+    /**
+     * Gère la question et la réponse pour chaque compétences du personnage
+     * 
+     * <p>
+     * Remplit le tableau caracteristique [i] avec toutes la compétence
+     * </p>
+     * 
+     * @param competence    : nom de la compétence à choisir
+     * @param comp          : numero de la compétence
+     * @param cond          : condition inférieur (1 pour le niveau, 0 pour le reste)
+     * 
+     * @see caracteristique
+     * @see SelectAllComp
+     */
     private void SelectComp (String competence, int comp, int cond)
     {
         boolean compOk = false;
@@ -97,7 +153,20 @@ public class CreationPerso {
         while (compOk != true);   
     }
     
-        
+    
+    /**
+     * Choisi la classe en fonction de caracteristique [0] et créer le personnage choisi. 
+     * Renvoi la phrases du personnage le décrivant
+     * 
+     * @param jAtk      : joueur en train de créer son personnage
+     * @param joueurAtk : joueur en train de créer son personnage
+     * @param joueurDef : joueur advserse
+     * 
+     * @return joueurAtk : personnage à créer suite aux réponses du joueur
+     * 
+     * @see ChoixClasse
+     * @see Personnage
+     */
     private Personnage ChoixClasse (String jAtk, Personnage joueurAtk, Personnage joueurDef)
     {
         switch (caracteristique[0]) 

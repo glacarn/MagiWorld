@@ -8,17 +8,59 @@ package magiworld;
 import java.util.Scanner;
 
 /**
- *
+ * Game est le corps du jeu, création des personnages et combat
+ * 
+ * <p>
+ * Dans un premier temps, cette classe renvoie à CreationPerso pour la gestion de la création des combattants. 
+ * Puis elle gère le combat des personnages définit.
+ * </p>
+ * 
+ * @see CreationPerso
+ * @see Personnage
+ * @see Combat
+ * @see Attaque
+ * 
  * @author Arno
  */
 public class Game 
 {
+    /**
+     * Scanner permet de récupérer les réponses concernant l'attaque choisie
+     */
     private Scanner sc = new Scanner(System.in);
+    
+    /**
+     * Initialisation de la classe CreationPerso afin de gérer la création des personnages
+     * 
+     * @see CreationPerso
+     */
     private CreationPerso createP = new CreationPerso();
+    
+    /**
+     * Initialisation du personnage joueur1, il sera définit par CreationPerso
+     * 
+     * @see CreationPerso
+     */
     private Personnage joueur1;
+    
+    /**
+     * Initialisation du personnage joueur2, il sera définit par CreationPerso
+     * 
+     * @see CreationPerso
+     */
     private Personnage joueur2;
 
-    
+    /**
+     * Gère la création des personnages et du combat
+     * 
+     * <ul>
+     * <li>1 : Créer un personnage pour chaque joueur et envoie la gestion de la création des personnages à CreationPerso</li>
+     * <li>2 : Lance le combat via la classe Combat</li>
+     * </ul>
+     * 
+     * @see CreationPerso
+     * @see Combat
+     */
     public Game ()
     {
         joueur1 = createP.CreationPerso("Joueur 1", joueur1, joueur2);
@@ -28,6 +70,15 @@ public class Game
         Combat(joueur1, joueur2);
     }
     
+    
+    /**
+     * Gère les attaques de chaque joueur à tour de rôle jusqu'a défaite de l'un d'entre eux
+     * 
+     * @param joueur1
+     * @param joueur2 
+     * 
+     * @see Attaque
+     */
     private void Combat (Personnage joueur1, Personnage joueur2)
     {
         while (joueur1.getVie()>0 && joueur2.getVie()>0)
@@ -45,7 +96,16 @@ public class Game
         { System.out.println("Joueur 2 a perdu !"); }
     }
     
-    
+    /**
+     * Récupère le choix du joueur attaquant et lance l'attaque correspondante en fonction de la classe du joueur
+     * 
+     * @param joueurAtk : joueur attaquant
+     * 
+     * @see Personnage
+     * @see Guerrier
+     * @see Rodeur
+     * @see Mage
+     */
     private void Attaque (Personnage joueurAtk)
     {
         boolean atk = true;
