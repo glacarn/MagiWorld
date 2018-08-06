@@ -28,6 +28,7 @@ public class Mage extends Personnage {
      */
     int vieMax = vie;
     
+    
     /**
      * Reprend les attributs de Personnage
      * 

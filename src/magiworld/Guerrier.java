@@ -39,6 +39,7 @@ public class Guerrier extends Personnage{
         super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);
     }
 
+    
     /**
      * Renvoie un String décrivant le Personnage Guerrieur créer avec ses attributs
      * 
@@ -49,6 +50,7 @@ public class Guerrier extends Personnage{
     {
         System.out.println("Woarg je suis le Guerrier "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
     }
+    
     
     /**
      * <ul>
@@ -66,6 +68,7 @@ public class Guerrier extends Personnage{
         joueurDef.setVie(joueurDef.getVie()-force);
     }
 
+    
     /**
      * <ul>
      * <li>Attaque spéciale du Guerrier : Coup de rage.</li>

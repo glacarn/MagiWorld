@@ -43,6 +43,7 @@ public class CreationPerso {
      */
     private int [] caracteristique = new int [6];
     
+    
     /**
      * Gère le choix de la classe et des compétences
      * 
@@ -68,6 +69,7 @@ public class CreationPerso {
         return ChoixClasse(jAtk,joueurAtk, joueurDef);
     }
 
+    
     /**
      * Gère la selection de la classe choisi par le joueur (Guerrier, Rodeur ou Mage), 
      * remplit caracteristique [0]
@@ -93,6 +95,7 @@ public class CreationPerso {
         }
         while (classeOk != true);
     }
+    
     
     /**
      * Gère la selection de toutes les compétences par l'intermédiaire de SelectComp
@@ -121,6 +124,7 @@ public class CreationPerso {
         }
         while (selectAllComp != true);     
     }
+    
     
     /**
      * Gère la question et la réponse pour chaque compétences du personnage

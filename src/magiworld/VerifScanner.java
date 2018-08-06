@@ -27,6 +27,7 @@ public class VerifScanner {
     */
     private Scanner sc = new Scanner(System.in);
     
+    
     /**
      * Vérification d'une entrée int par le joueur
      * 

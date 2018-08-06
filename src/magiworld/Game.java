@@ -49,6 +49,7 @@ public class Game
      */
     private Personnage joueur2;
 
+    
     /**
      * Gère la création des personnages et du combat
      * 
@@ -94,6 +95,7 @@ public class Game
         else if (joueur2.getVie()<=0)
         { System.out.println("Joueur 2 a perdu !"); }
     }
+    
     
     /**
      * Récupère le choix du joueur attaquant et lance l'attaque correspondante en fonction de la classe du joueur
