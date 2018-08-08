@@ -12,7 +12,8 @@ import static org.junit.Assert.*;
  *
  * @author Arno
  */
-public class MageTest {
+public class MageTest 
+{
     
     public MageTest() {
     }
@@ -22,7 +23,8 @@ public class MageTest {
      * Test of DecrisToi method, of class Mage.
      */
     @Test
-    public void testDecrisToi_Renvoi_String_Description() {
+    public void testDecrisToi_Renvoi_String_Description() 
+    {
         System.out.println("DecrisToi");
         Mage joueurAtk = new Mage(10, 50, 0, 0, 10, "joueur1");
         System.out.println(joueurAtk.DecrisToi());
@@ -34,7 +36,8 @@ public class MageTest {
      * Test of AttaqueBasique method, of class Mage.
      */
     @Test
-    public void testAttaqueBasique_Dommages_Egal_Intelligence() {
+    public void testAttaqueBasique_Dommages_Egal_Intelligence() 
+    {
         System.out.println("AttaqueBasique");
         Mage joueurAtk = new Mage(10, 50, 0, 0, 20, "joueur1");
         Mage joueurDef = new Mage(10, 50, 0, 0, 10, "joueur1");
@@ -47,7 +50,8 @@ public class MageTest {
      * Test of AttaqueSpeciale method, of class Mage.
      */
     @Test
-    public void testAttaqueSpeciale_Soin_Egal_2Intelligence() {
+    public void testAttaqueSpeciale_Soin_Egal_2Intelligence() 
+    {
         System.out.println("AttaqueSpeciale");
         Mage joueurAtk = new Mage(10, 50, 0, 0, 10, "joueur1");
         joueurAtk.setVie(20);
@@ -57,7 +61,8 @@ public class MageTest {
     }
     
     @Test
-    public void testAttaqueSpeciale_Soin_Egal_2Intelligence_SansDepasser_VieInitiale() {
+    public void testAttaqueSpeciale_Soin_Egal_2Intelligence_SansDepasser_VieInitiale() 
+    {
         System.out.println("AttaqueSpeciale");
         Mage joueurAtk = new Mage(10, 50, 0, 0, 10, "joueur1");
         joueurAtk.setVie(40);

@@ -17,7 +17,8 @@ import org.junit.Before;
  *
  * @author Arno
  */
-public class VerifScannerTest {
+public class VerifScannerTest 
+{
     
     public VerifScannerTest() {
     }
@@ -35,7 +36,8 @@ public class VerifScannerTest {
      * Test of VerifScanner method, of class VerifScanner.
      */
     @Test
-    public void testVerifScanner_Sortie_Int() {
+    public void testVerifScanner_Sortie_Int() 
+    {
         System.out.println("VerifScanner");
         String question = "";
         System.setIn(new ByteArrayInputStream("1".getBytes()));
@@ -44,7 +46,8 @@ public class VerifScannerTest {
     }
     
     @Test
-    public void testVerifScanner_Sortie_NonInt_MessageErreur() {
+    public void testVerifScanner_Sortie_NonInt_MessageErreur() 
+    {
         String question = "Sans chiffre!!!";
         System.setIn(new ByteArrayInputStream("a".getBytes()));
         VerifScanner scan = new VerifScanner();

@@ -12,7 +12,8 @@ import static org.junit.Assert.*;
  *
  * @author Arno
  */
-public class GuerrierTest {
+public class GuerrierTest 
+{
     
     public GuerrierTest() {
     }
@@ -21,7 +22,8 @@ public class GuerrierTest {
      * Test of DecrisToi method, of class Guerrier.
      */
     @Test
-    public void testDecrisToi_Renvoi_String_Description() {
+    public void testDecrisToi_Renvoi_String_Description() 
+    {
         System.out.println("DecrisToi");
         Guerrier joueurAtk = new Guerrier(10, 50, 10, 0, 0, "joueur1");
         System.out.println(joueurAtk.DecrisToi());
@@ -33,7 +35,8 @@ public class GuerrierTest {
      * Test of AttaqueBasique method, of class Guerrier.
      */
     @Test
-    public void testAttaqueBasique_Dommages_Egal_Force() {
+    public void testAttaqueBasique_Dommages_Egal_Force() 
+    {
         System.out.println("AttaqueBasique");
         Guerrier joueurAtk = new Guerrier(10, 50, 10, 0, 0, "joueur1");
         Guerrier joueurDef = new Guerrier(10, 50, 10, 0, 0, "joueur1");
@@ -46,7 +49,8 @@ public class GuerrierTest {
      * Test of AttaqueSpeciale method, of class Guerrier.
      */
     @Test
-    public void testAttaqueSpeciale_Dommages_Egal_2ForcePourDef_05ForcePourAtk() {
+    public void testAttaqueSpeciale_Dommages_Egal_2ForcePourDef_05ForcePourAtk() 
+    {
         System.out.println("AttaqueSpeciale");
         Guerrier joueurAtk = new Guerrier(10, 50, 10, 0, 0, "joueur1");
         Personnage joueurDef = new Guerrier(10, 50, 10, 0, 0, "joueur1");

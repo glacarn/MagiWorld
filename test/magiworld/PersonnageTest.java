@@ -5,10 +5,6 @@
  */
 package magiworld;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,7 +12,8 @@ import static org.junit.Assert.*;
  *
  * @author Arno
  */
-public class PersonnageTest {
+public class PersonnageTest 
+{
     
     public PersonnageTest() {
     }
@@ -26,7 +23,8 @@ public class PersonnageTest {
      * Test of getVie method, of class Personnage.
      */
     @Test
-    public void testGetVie() {
+    public void testGetVie() 
+    {
         System.out.println("getVie");
         Personnage perso = new Guerrier (10, 50, 10, 0, 0, "joueur1");
         assertEquals(50, perso.getVie());
@@ -36,7 +34,8 @@ public class PersonnageTest {
      * Test of setVie method, of class Personnage.
      */
     @Test
-    public void testSetVie() {
+    public void testSetVie() 
+    {
         System.out.println("setVie");
         int vie = 0;
         Personnage perso = new Guerrier (10, 50, 10, 0, 0, "joueur1");
@@ -48,7 +47,8 @@ public class PersonnageTest {
      * Test of getJoueur method, of class Personnage.
      */
     @Test
-    public void testGetJoueur() {
+    public void testGetJoueur() 
+    {
         System.out.println("getJoueur");
         Personnage perso = new Guerrier (10, 50, 10, 0, 0, "joueur1");
         assertEquals("joueur1", perso.getJoueur());

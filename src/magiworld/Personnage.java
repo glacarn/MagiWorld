@@ -69,7 +69,6 @@ public abstract class Personnage
      * @see agilite
      * @see intelligence
      * @see joueurAtkStr
-     * @see joueurDef
      */
     public Personnage (int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr)
     {

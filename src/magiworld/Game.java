@@ -114,7 +114,8 @@ public class Game
             String question = joueurAtk.getJoueur()+" ("+joueurAtk.getVie()+" Vitalité) veuillez choisir votre action (1 : Attaque Basique, 2 : Attaque Spéciale)";
             System.out.println(question);
             atk = true;
-            switch (scan.VerifScanner(question)) {
+            switch (scan.VerifScanner(question)) 
+            {
                 case 1:
                     joueurAtk.AttaqueBasique(joueurDef);
                     break;
