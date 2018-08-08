@@ -5,12 +5,13 @@
  */
 package magiworld;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
@@ -20,36 +21,35 @@ public class VerifScannerTest {
     
     public VerifScannerTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
     @Before
-    public void setUp() {
-    }
+    public void setUp() {System.setOut(new PrintStream(outContent));}
     
     @After
-    public void tearDown() {
-    }
-
+    public void tearDown() {System.setOut(System.out);}
+    
+    
     /**
      * Test of VerifScanner method, of class VerifScanner.
      */
     @Test
-    public void testVerifScanner() {
+    public void testVerifScanner_Sortie_Int() {
         System.out.println("VerifScanner");
         String question = "";
-        VerifScanner instance = new VerifScanner();
-        int expResult = 0;
-        int result = instance.VerifScanner(question);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.setIn(new ByteArrayInputStream("1".getBytes()));
+        VerifScanner scan = new VerifScanner();
+        assertEquals(1, scan.VerifScanner(question));
+    }
+    
+    @Test
+    public void testVerifScanner_Sortie_NonInt_MessageErreur() {
+        String question = "Sans chiffre!!!";
+        System.setIn(new ByteArrayInputStream("a".getBytes()));
+        VerifScanner scan = new VerifScanner();
+        scan.VerifScanner(question);
+        assertEquals(outContent.toString().replace("\r\n", "\n"), "(Veuillez saisir un chiffre) " + question +"\n");
     }
     
 }

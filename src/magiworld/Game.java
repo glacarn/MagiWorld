@@ -63,9 +63,8 @@ public class Game
      */
     public Game ()
     {
-        joueur1 = createP.CreationPerso("Joueur 1", joueur1, joueur2);
-        joueur2 = createP.CreationPerso("Joueur 2", joueur2, joueur1);
-        joueur1.setJoueurDef(joueur2);
+        joueur1 = createP.CreationPerso("Joueur 1", joueur1);
+        joueur2 = createP.CreationPerso("Joueur 2", joueur2);
         
         Combat(joueur1, joueur2);
     }
@@ -84,9 +83,9 @@ public class Game
         while (joueur1.getVie()>0 && joueur2.getVie()>0)
         {
             if (joueur1.getVie()>0)
-            { Attaque(joueur1); }
+            { Attaque(joueur1, joueur2); }
             if (joueur2.getVie()>0 && joueur1.getVie()>0)
-            { Attaque(joueur2); }          
+            { Attaque(joueur2, joueur1); }          
         }
         if(joueur1.getVie() <=0 && joueur2.getVie() <=0)
         { System.out.println("Les 2 joueurs ont perdu"); }
@@ -107,7 +106,7 @@ public class Game
      * @see Rodeur
      * @see Mage
      */
-    private void Attaque (Personnage joueurAtk)
+    private void Attaque (Personnage joueurAtk, Personnage joueurDef)
     {
         boolean atk = true;
         do
@@ -117,10 +116,10 @@ public class Game
             atk = true;
             switch (scan.VerifScanner(question)) {
                 case 1:
-                    joueurAtk.AttaqueBasique();
+                    joueurAtk.AttaqueBasique(joueurDef);
                     break;
                 case 2:
-                    joueurAtk.AttaqueSpeciale();
+                    joueurAtk.AttaqueSpeciale(joueurDef);
                     break;
                 default:
                     System.out.println("Vous devez selectionner 1 ou 2");

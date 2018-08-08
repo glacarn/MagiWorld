@@ -49,7 +49,7 @@ public class CreationPersoTest {
         Personnage joueurDef = null;
         CreationPerso instance = new CreationPerso();
         Personnage expResult = null;
-        Personnage result = instance.CreationPerso(jAtk, joueurAtk, joueurDef);
+        Personnage result = instance.CreationPerso(jAtk, joueurAtk);
         assertEquals(expResult, result);
     }
     

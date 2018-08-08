@@ -37,14 +37,11 @@ public class VerifScanner {
      */
     public int VerifScanner (String question)
     {
-        Boolean scanOk = false;
-        int scan = 0;
         do
         {
             try
             {
-                scan = sc.nextInt();
-                scanOk = true;
+                return sc.nextInt();
             }
             catch (InputMismatchException e)
             {
@@ -52,7 +49,7 @@ public class VerifScanner {
                 System.out.println("(Veuillez saisir un chiffre) " + question);
             }
         }
-        while (!scanOk);
-        return scan;
+        while (sc.hasNextInt());
+        return 0;
     }
 }

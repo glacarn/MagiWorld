@@ -52,11 +52,6 @@ public abstract class Personnage
      */
     protected String joueurAtkStr;
     
-    /**
-     * Personnage du joueur adverse
-     */
-    protected Personnage joueurDef;
-    
     
     /**
      * Creation du personnage avec les attributs
@@ -67,7 +62,6 @@ public abstract class Personnage
      * @param agilite       : agilite du Personnage
      * @param intelligence  : intelligence du Personnage
      * @param joueurAtkStr  : joueur1 ou joueur2
-     * @param joueurDef     : joueur adverse
      * 
      * @see niveau
      * @see vie
@@ -77,7 +71,7 @@ public abstract class Personnage
      * @see joueurAtkStr
      * @see joueurDef
      */
-    public Personnage (int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef)
+    public Personnage (int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr)
     {
         this.niveau = niveau;
         this.vie = vie;
@@ -85,15 +79,14 @@ public abstract class Personnage
         this.agilite = agilite;
         this.intelligence = intelligence;
         this.joueurAtkStr = joueurAtkStr;
-        this.joueurDef = joueurDef;
     }
     
     
-    public abstract void AttaqueBasique ();
+    public abstract void AttaqueBasique (Personnage joueurDef);
     
-    public abstract void AttaqueSpeciale ();
+    public abstract void AttaqueSpeciale (Personnage joueurDef);
     
-    public abstract void DecrisToi ();
+    public abstract String DecrisToi ();
     
     
     public int getVie() {
@@ -107,8 +100,5 @@ public abstract class Personnage
     public String getJoueur() {
         return joueurAtkStr;
     }
-    
-    public void setJoueurDef(Personnage joueurDef) {
-        this.joueurDef = joueurDef;
-    }
+
 }

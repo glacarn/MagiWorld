@@ -54,19 +54,18 @@ public class CreationPerso {
      * 
      * @param jAtk      : "joueur 1" ou "joueur 2"
      * @param joueurAtk : personnage du joueur à créer
-     * @param joueurDef : personnage du joueur adverse
      * 
      * @return Personnage à créer
      * 
      * @see ChoixClasse
      * @see SelectAllComp
      */
-    public Personnage CreationPerso (String jAtk, Personnage joueurAtk, Personnage joueurDef)
+    public Personnage CreationPerso (String jAtk, Personnage joueurAtk)
     {
         System.out.println("Création du personnage du " + jAtk);
         ChoixClasse();
         SelectAllComp();
-        return ChoixClasse(jAtk,joueurAtk, joueurDef);
+        return ChoixClasse(jAtk,joueurAtk);
     }
 
     
@@ -174,26 +173,26 @@ public class CreationPerso {
      * @see ChoixClasse
      * @see Personnage
      */
-    private Personnage ChoixClasse (String jAtk, Personnage joueurAtk, Personnage joueurDef)
+    private Personnage ChoixClasse (String jAtk, Personnage joueurAtk)
     {
         switch (caracteristique[0]) 
         {
             case 1:
                 joueurAtk = new Guerrier(caracteristique[1], caracteristique[2],
-                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk, joueurDef);
+                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk);
                 break;
             case 2:
                 joueurAtk = new Rodeur(caracteristique[1], caracteristique[2],
-                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk, joueurDef);
+                        caracteristique[3], caracteristique[4], caracteristique[5], jAtk);
                 break;
             case 3:
                 joueurAtk = new Mage(caracteristique[1], caracteristique[2],
-                        caracteristique[3],caracteristique[4],caracteristique[5], jAtk, joueurDef);
+                        caracteristique[3], caracteristique[4], caracteristique[5], jAtk);
                 break;
             default:
                 break;
         }
-        joueurAtk.DecrisToi();
+        System.out.println(joueurAtk.DecrisToi());
         return joueurAtk;
     }
 }

@@ -31,25 +31,26 @@ public class Rodeur extends Personnage
      * @param agilite       : agilite du Rodeur
      * @param intelligence  : intelligence du Rodeur
      * @param joueurAtkStr  : joueur1 ou joueur2
-     * @param joueurDef     : joueur adverse
      * 
      * @see Personnage
      */
-    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef) 
+    public Rodeur(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr);
     }
 
     
     /**
      * Renvoie un String décrivant le Personnage Rodeur créer avec ses attributs
      * 
+     * @return : phrase de description
+     * 
      * @see Personnage
      */
     @Override
-    public void DecrisToi() 
+    public String DecrisToi() 
     {
-        System.out.println("Chuuut je suis le Rodeur "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+        return "Chuuut je suis le Rodeur "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !";
     }
     
     
@@ -59,10 +60,12 @@ public class Rodeur extends Personnage
      * <li>inflige en dégats l'équivalent de son agilité.</li>
      * </ul>
      * 
+     * @param joueurDef : joueur adverse
+     * 
      * @see agilite
      */
     @Override
-    public void AttaqueBasique() 
+    public void AttaqueBasique(Personnage joueurDef) 
     {
         System.out.println(joueurAtkStr+" utilise Tir à l'Arc et inflige "+ agilite +" dommages");
         System.out.println(joueurDef.getJoueur()+" perd "+ agilite +" points de vie");
@@ -76,11 +79,13 @@ public class Rodeur extends Personnage
      * <li>augmente son agilité d'un équivalent de : niveau/2.</li>
      * </ul>
      * 
+     * @param joueurDef : joueur adverse
+     * 
      * @see niveau
      * @see agilite
      */
     @Override
-    public void AttaqueSpeciale() {
+    public void AttaqueSpeciale(Personnage joueurDef) {
         System.out.println(joueurAtkStr+" utilise Concentration, son agilité augmente de " + niveau/2);
         agilite = agilite + (niveau/2);
         System.out.println(joueurAtkStr+" a désormais une agilité de "+agilite);

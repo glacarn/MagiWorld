@@ -30,25 +30,26 @@ public class Guerrier extends Personnage{
      * @param agilite       : agilite du Guerrier
      * @param intelligence  : intelligence du Guerrier
      * @param joueurAtkStr  : joueur1 ou joueur2
-     * @param joueurDef     : joueur adverse
      * 
      * @see Personnage
      */
-    public Guerrier(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef) 
+    public Guerrier(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr);
     }
 
     
     /**
      * Renvoie un String décrivant le Personnage Guerrieur créer avec ses attributs
      * 
+     * @return : phrase de description
+     * 
      * @see Personnage
      */
         @Override
-    public void DecrisToi() 
+    public String DecrisToi() 
     {
-        System.out.println("Woarg je suis le Guerrier "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+        return "Woarg je suis le Guerrier "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !";
     }
     
     
@@ -58,10 +59,12 @@ public class Guerrier extends Personnage{
      * <li>Inflige en dégats l'équivalent de sa force.</li>
      * </ul>
      * 
+     * @param joueurDef : joueur adverse
+     * 
      * @see force
      */
     @Override
-    public void AttaqueBasique() 
+    public void AttaqueBasique(Personnage joueurDef) 
     {
         System.out.println(joueurAtkStr+" utilise Coup d'Epée et inflige "+ force +" dommages");
         System.out.println(joueurDef.getJoueur()+" perd "+ force +" points de vie");
@@ -76,11 +79,13 @@ public class Guerrier extends Personnage{
      * <li>Perd vie l'équivalent de sa force/2.</li>
      * </ul>
      * 
+     * @param joueurDef : joueur adverse
+     * 
      * @see force
      * @see vie
      */
     @Override
-    public void AttaqueSpeciale() 
+    public void AttaqueSpeciale(Personnage joueurDef) 
     {
         System.out.println(joueurAtkStr+" utilise Coup de Rage et inflige "+ force*2 +" dommages");
         System.out.println(joueurDef.getJoueur()+" perd "+ force*2 +" points de vie");

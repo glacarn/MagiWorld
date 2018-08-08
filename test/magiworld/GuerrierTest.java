@@ -5,10 +5,6 @@
  */
 package magiworld;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,57 +16,43 @@ public class GuerrierTest {
     
     public GuerrierTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of DecrisToi method, of class Guerrier.
      */
     @Test
-    public void testDecrisToi() {
+    public void testDecrisToi_Renvoi_String_Description() {
         System.out.println("DecrisToi");
-        Guerrier instance = null;
-        instance.DecrisToi();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Guerrier joueurAtk = new Guerrier(10, 50, 10, 0, 0, "joueur1");
+        System.out.println(joueurAtk.DecrisToi());
+        assertEquals("Woarg je suis le Guerrier joueur1 niveau 10 je possède 50 de vitalité, 10 de force, 0 d'agilité, 0 d'intelligence !", 
+                joueurAtk.DecrisToi());
     }
 
     /**
      * Test of AttaqueBasique method, of class Guerrier.
      */
     @Test
-    public void testAttaqueBasique() {
+    public void testAttaqueBasique_Dommages_Egal_Force() {
         System.out.println("AttaqueBasique");
-        Guerrier instance = null;
-        instance.AttaqueBasique();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Guerrier joueurAtk = new Guerrier(10, 50, 10, 0, 0, "joueur1");
+        Guerrier joueurDef = new Guerrier(10, 50, 10, 0, 0, "joueur1");
+        joueurAtk.AttaqueBasique(joueurDef);
+        assertTrue(joueurDef.getVie() == 40);
+        
     }
 
     /**
      * Test of AttaqueSpeciale method, of class Guerrier.
      */
     @Test
-    public void testAttaqueSpeciale() {
+    public void testAttaqueSpeciale_Dommages_Egal_2ForcePourDef_05ForcePourAtk() {
         System.out.println("AttaqueSpeciale");
-        Guerrier instance = null;
-        instance.AttaqueSpeciale();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Guerrier joueurAtk = new Guerrier(10, 50, 10, 0, 0, "joueur1");
+        Personnage joueurDef = new Guerrier(10, 50, 10, 0, 0, "joueur1");
+        joueurAtk.AttaqueSpeciale(joueurDef);
+        assertTrue (joueurDef.getVie() == 30 && joueurAtk.getVie() == 45);
+        
     }
     
 }

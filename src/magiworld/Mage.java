@@ -38,25 +38,26 @@ public class Mage extends Personnage {
      * @param agilite       : agilite du Mage
      * @param intelligence  : intelligence du Mage
      * @param joueurAtkStr  : joueur1 ou joueur2
-     * @param joueurDef     : joueur adverse
      * 
      * @see Personnage
      */
-    public Mage(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr, Personnage joueurDef) 
+    public Mage(int niveau, int vie, int force, int agilite, int intelligence, String joueurAtkStr) 
     {
-        super(niveau, vie, force, agilite, intelligence, joueurAtkStr, joueurDef);       
+        super(niveau, vie, force, agilite, intelligence, joueurAtkStr);       
     }
 
     
     /**
      * Renvoie un String décrivant le Personnage Mage créer avec ses attributs
      * 
+     * @return : phrase de description
+     * 
      * @see Personnage
      */
     @Override
-    public void DecrisToi() 
+    public String DecrisToi() 
     {
-        System.out.println("Abracadabra je suis le Mage "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !");
+        return "Abracadabra je suis le Mage "+joueurAtkStr+" niveau "+niveau+" je possède "+vie+" de vitalité, "+force+" de force, "+agilite+" d'agilité, "+intelligence+" d'intelligence !";
     }
     
     
@@ -66,10 +67,12 @@ public class Mage extends Personnage {
      * <li>Inflige en dégats l'équivalent de son intelligence.</li>
      * </ul>
      * 
+     * @param joueurDef : joueur adverse
+     * 
      * @see intelligence
      */
     @Override
-    public void AttaqueBasique() 
+    public void AttaqueBasique(Personnage joueurDef) 
     {
         System.out.println(joueurAtkStr+" utilise Boule de Feu et inflige "+ intelligence +" dommages");
         System.out.println(joueurDef.getJoueur()+" perd "+ intelligence +" points de vie");
@@ -83,12 +86,14 @@ public class Mage extends Personnage {
      * <li>Le joueur se soigne d'une équivalence intelligence*2.</li>
      * </ul>
      * 
+     * @param joueurDef : joueur adverse
+     * 
      * @see intelligence
      * @see vie
      * @see vieMax
      */
     @Override
-    public void AttaqueSpeciale() 
+    public void AttaqueSpeciale(Personnage joueurDef) 
     {
         System.out.println(joueurAtkStr+" utilise Soin et gagne "+ intelligence*2 +" vitalité");
         vie = vie + (intelligence*2);
